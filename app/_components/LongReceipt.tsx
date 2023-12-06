@@ -24,13 +24,13 @@ const LongReceipt = ({
     ) => void;
   } | null>(null);  
   const [isStitching, setIsStitching] = useState(false)
- 
+  const CLIENT_ID = process.env.NEXT_PUBLIC_CLIENT_ID;
   useEffect(() => {
     const startWasm = async () => {
       if (typeof window !== 'undefined') {
         const lens = require('veryfi-lens-wasm').default;
         lens.setUserAgent(navigator.userAgent);
-        await lens.initWasmLong(sessionToken);
+        await lens.initWasmLong(sessionToken, CLIENT_ID);
         setVeryfiLens(lens);
       }
     }

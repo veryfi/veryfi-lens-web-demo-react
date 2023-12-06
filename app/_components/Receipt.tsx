@@ -23,13 +23,13 @@ const Receipt = ({
       arg1: React.Dispatch<React.SetStateAction<boolean>>
     ) => void;
   } | null>(null);  
-
+  const CLIENT_ID = process.env.NEXT_PUBLIC_CLIENT_ID;
   useEffect(() => {
     const startWasm = async () => {
       if (typeof window !== 'undefined') {
         const lens = require('veryfi-lens-wasm').default;
         lens.setUserAgent(navigator.userAgent);
-        await lens.initWasm(sessionToken);
+        await lens.initWasm(sessionToken, CLIENT_ID);
         setVeryfiLens(lens);
       }
     }

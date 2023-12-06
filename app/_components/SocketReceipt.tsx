@@ -28,14 +28,14 @@ const LensComponent = ({
   const [socketStatusColor, setSocketStatusColor] = useState("purple");
   const [veryfiLens, setVeryfiLens] = useState<VeryfiLens | null>(null);
   const [error, setError] = useState<string | null>(null);
-
+  const CLIENT_ID = process.env.NEXT_PUBLIC_CLIENT_ID;
 
   useEffect(() => {
     let intervalRef: number | undefined;
     if (typeof window !== 'undefined') {
       const startLens = async () => {
         const lens = require('veryfi-lens-wasm').default;
-        lens.init(sessionToken);
+        lens.init(sessionToken, CLIENT_ID);
         intervalRef = window.setInterval(() => {
           setSocketStatusColor(lens.getSocketStatusColor());
         }, SOCKET_STATUS_UPDATE_INTERVAL);
