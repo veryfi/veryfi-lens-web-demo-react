@@ -28,6 +28,7 @@ const Receipt = ({
     const startWasm = async () => {
       if (typeof window !== 'undefined') {
         const lens = require('veryfi-lens-wasm').default;
+        console.log(await lens.getDeviceData())
         lens.setUserAgent(navigator.userAgent);
         await lens.initWasm(sessionToken, CLIENT_ID);
         setVeryfiLens(lens);

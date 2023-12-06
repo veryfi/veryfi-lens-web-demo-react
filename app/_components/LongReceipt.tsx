@@ -30,6 +30,7 @@ const LongReceipt = ({
       if (typeof window !== 'undefined') {
         const lens = require('veryfi-lens-wasm').default;
         lens.setUserAgent(navigator.userAgent);
+        console.log(await lens.getDeviceData())
         await lens.initWasmLong(sessionToken, CLIENT_ID);
         setVeryfiLens(lens);
       }

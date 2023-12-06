@@ -35,6 +35,7 @@ const LensComponent = ({
     if (typeof window !== 'undefined') {
       const startLens = async () => {
         const lens = require('veryfi-lens-wasm').default;
+        console.log(await lens.getDeviceData())
         lens.init(sessionToken, CLIENT_ID);
         intervalRef = window.setInterval(() => {
           setSocketStatusColor(lens.getSocketStatusColor());

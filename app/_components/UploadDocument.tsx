@@ -24,7 +24,7 @@ const UploadDocument = ({
 }: ReceiptProps) => {
   const [imageFile, setImageFile] = useState(null);
   const [veryfiLens, setVeryfiLens] = useState<{
-    getDeviceData(): unknown;
+    getDeviceData(): any;
     setUserAgent: (arg0: string) => void;
     initUploadWasm: (arg0: string) => void;
     captureUploaded: (arg0: Blob) => any;
@@ -38,11 +38,10 @@ const UploadDocument = ({
     const startWasm = async () => {
       if (typeof window !== "undefined") {
         const lens = require("veryfi-lens-wasm").default;
+        console.log(await lens.getDeviceData())
         lens.setUserAgent(navigator.userAgent);
-        setDeviceData(lens.getDeviceData());
         await lens.initUploadWasm(sessionToken, CLIENT_ID);
         setVeryfiLens(lens);
-        console.log(deviceData)
       }
     };
     startWasm();
