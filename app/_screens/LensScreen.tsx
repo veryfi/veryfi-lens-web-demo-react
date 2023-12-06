@@ -13,7 +13,7 @@ export interface LensScreenProps {
 }
 
 const LensScreen = ({ setIsEditing, setImage, image }: LensScreenProps) => {
-  const clientId: string = "vrfXtjjoSaufymeUyV9etJt92sUc1lvT4TmvjnO";
+  const clientId: string = "Your Client Id";
   const VALIDATE_URL = "https://lens.veryfi.com/rest/validate_partner"; //Ideally put those to .env file
   const [isNormal, setIsNormal] = useState<boolean>(false);
   const [isLong, setIsLong] = useState<boolean>(false);
