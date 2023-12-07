@@ -12,7 +12,7 @@ export default function Home() {
       {isEditing ? (
         <EditScreen image={image} setIsEditing={setIsEditing} />
       ) : (
-        <LensScreen setImage={setImage} setIsEditing={setIsEditing} />
+        <LensScreen setImage={setImage} image={image} setIsEditing={setIsEditing} />
       )}
     </main>
   );
