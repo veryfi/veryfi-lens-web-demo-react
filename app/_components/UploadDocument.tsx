@@ -32,7 +32,7 @@ const UploadDocument = ({
   } | null>(null);
   const [imageData, setImageData] = useState("");
   const fileInputRef = useRef(null);
-  const CLIENT_ID = process.env.NEXT_PUBLIC_CLIENT_ID;
+  const CLIENT_ID = process.env.CLIENT_ID;
 
   useEffect(() => {
     const startWasm = async () => {
