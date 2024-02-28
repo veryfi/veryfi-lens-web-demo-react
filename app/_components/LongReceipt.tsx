@@ -23,7 +23,7 @@ const LongReceipt = ({
     ) => void;
   } | null>(null);
   const [isStitching, setIsStitching] = useState(false);
-  const CLIENT_ID = process.env.CLIENT_ID;
+  const CLIENT_ID = process.env.NEXT_PUBLIC_CLIENT_ID;
   useEffect(() => {
     const startWasm = async () => {
       if (typeof window !== "undefined") {
