@@ -30,5 +30,5 @@ There are two ways of using Lens for Web:
 2. Import package `import VeryfiLens from 'veryfi-lens-wasm'`
    or `const lens = require('veryfi-lens-wasm').default` inside `useEffect` for next.js
 3. Add `id='veryfi-container'` to a div you want lens to appear (it should have full height and hidden overflow)
-4. Create .env file and add your client_id (NEXT_PUBLIC_CLIENT_ID)
+4. Create .env file and add your client_id (CLIENT_ID)
 
