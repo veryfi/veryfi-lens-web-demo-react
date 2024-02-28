@@ -18,7 +18,7 @@ const Receipt = ({ sessionToken, setImage, setIsEditing }: ReceiptProps) => {
       arg1: React.Dispatch<React.SetStateAction<boolean>>
     ) => void;
   } | null>(null);
-  const CLIENT_ID = process.env.NEXT_PUBLIC_CLIENT_ID;
+  const CLIENT_ID = process.env.CLIENT_ID;
   useEffect(() => {
     const startWasm = async () => {
       if (typeof window !== "undefined") {
