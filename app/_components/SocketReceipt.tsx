@@ -24,7 +24,6 @@ const LensComponent = ({
   setImage,
   setIsEditing,
 }: LensComponentProps) => {
-
   const [socketStatusColor, setSocketStatusColor] = useState("purple");
   const [veryfiLens, setVeryfiLens] = useState<VeryfiLens | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -32,16 +31,16 @@ const LensComponent = ({
 
   useEffect(() => {
     let intervalRef: number | undefined;
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       const startLens = async () => {
-        const lens = require('veryfi-lens-wasm').default;
-        console.log(await lens.getDeviceData())
+        const lens = require("veryfi-lens-wasm").default;
+        console.log(await lens.getDeviceData());
         lens.init(sessionToken, CLIENT_ID);
         intervalRef = window.setInterval(() => {
           setSocketStatusColor(lens.getSocketStatusColor());
         }, SOCKET_STATUS_UPDATE_INTERVAL);
         setVeryfiLens(lens);
-      }
+      };
       startLens();
     }
     return () => {
@@ -51,9 +50,9 @@ const LensComponent = ({
 
   const takePhoto = () => {
     if (veryfiLens) {
-      veryfiLens.capture(setImage, setIsEditing)
+      veryfiLens.capture(setImage, setIsEditing);
     } else {
-      setError('veryfiLens is not initialized');
+      setError("veryfiLens is not initialized");
     }
   };
 

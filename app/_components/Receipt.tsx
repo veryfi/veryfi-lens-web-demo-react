@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React, { useEffect, Dispatch, SetStateAction, useState } from "react";
 
 export interface ReceiptProps {
@@ -7,12 +7,7 @@ export interface ReceiptProps {
   setIsEditing: Dispatch<SetStateAction<boolean>>;
 }
 
-const Receipt = ({
-  sessionToken,
-  setImage,
-  setIsEditing,
-}: ReceiptProps) => {
-
+const Receipt = ({ sessionToken, setImage, setIsEditing }: ReceiptProps) => {
   const [veryfiLens, setVeryfiLens] = useState<{
     setUserAgent: (arg0: string) => void;
     initWasm: (arg0: string) => void;
@@ -22,29 +17,28 @@ const Receipt = ({
       arg0: React.Dispatch<React.SetStateAction<string>>,
       arg1: React.Dispatch<React.SetStateAction<boolean>>
     ) => void;
-  } | null>(null);  
+  } | null>(null);
   const CLIENT_ID = process.env.NEXT_PUBLIC_CLIENT_ID;
   useEffect(() => {
     const startWasm = async () => {
-      if (typeof window !== 'undefined') {
-        const lens = require('veryfi-lens-wasm').default;
-        console.log(await lens.getDeviceData())
+      if (typeof window !== "undefined") {
+        const lens = require("veryfi-lens-wasm").default;
+        console.log(await lens.getDeviceData());
         lens.setUserAgent(navigator.userAgent);
         await lens.initWasm(sessionToken, CLIENT_ID);
         setVeryfiLens(lens);
       }
-    }
-    startWasm()
+    };
+    startWasm();
   }, []);
 
   const takePhoto = () => {
     if (veryfiLens) {
-      veryfiLens.captureWasm(setImage, setIsEditing)
+      veryfiLens.captureWasm(setImage, setIsEditing);
     } else {
-      console.log('veryfiLens is not initialized')
+      console.log("veryfiLens is not initialized");
     }
   };
-
 
   return (
     <div className="h-full">
