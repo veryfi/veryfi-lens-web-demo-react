@@ -38,7 +38,7 @@ const UploadDocument = ({
     const startWasm = async () => {
       if (typeof window !== "undefined") {
         const lens = require("veryfi-lens-wasm").default;
-        console.log(await lens.getDeviceData())
+        console.log(await lens.getDeviceData());
         lens.setUserAgent(navigator.userAgent);
         await lens.initUploadWasm(sessionToken, CLIENT_ID);
         setVeryfiLens(lens);
